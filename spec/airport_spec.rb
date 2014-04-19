@@ -13,4 +13,13 @@ describe Airport do
 
   end
 
+  it "a plane can land" do
+    airport = Airport.new
+    plane = double :plane
+
+    expect(plane).to receive(:land)
+
+    airport.clear_to_land(plane)
+  end
+
 end

@@ -4,4 +4,7 @@ class Airport
     plane.takeoff
   end
 
+  def clear_to_land(plane)
+    plane.land
+  end
 end
