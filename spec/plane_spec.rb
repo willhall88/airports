@@ -9,4 +9,12 @@ describe Plane do
     expect(plane).not_to be_flying
   end
 
+  it "has a status of flying once it has taken off" do
+    plane = Plane.new
+
+    plane.takeoff
+
+    expect(plane).to be_flying
+  end
+
 end
