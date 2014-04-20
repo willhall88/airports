@@ -3,7 +3,7 @@ require "airport"
 describe Airport do
   
   let(:airport) {Airport.new}
-  let(:plane) {double :plane}
+  let(:plane) {double :plane, land: :plane}
 
   it "a plane can land" do
     expect(airport.plane_count).to eq 0
@@ -21,12 +21,19 @@ describe Airport do
   end
 
   it "can be full" do
-    plane = double :plane, land: :plane
+
     expect(airport).not_to be_full
 
     6.times {airport.clear_to_land(plane)}
 
     expect(airport).to be_full
+
+  end
+
+  it "a plane cannot land if the airport is full" do
+    6.times {airport.clear_to_land(plane)}
+
+    expect{airport.clear_to_land(plane)}.to raise_error(RuntimeError)
 
   end
 

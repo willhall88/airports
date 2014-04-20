@@ -15,6 +15,7 @@ class Airport
   end
 
   def clear_to_land(plane)
+    raise "not clear to land!" if full?
     plane.land
     @planes << plane
   end
