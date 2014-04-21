@@ -7,5 +7,4 @@ module Weather
   def stormy?
     weather == 1
   end
-
 end

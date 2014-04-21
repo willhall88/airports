@@ -21,18 +21,18 @@ class Airport
     @planes.delete(plane)
   end
 
-  def not_clear_land
+  def not_clear_to_land
     full? || stormy?
   end
 
   def clear_to_land(plane)
     # puts "stormy? : #{stormy?}"
-    raise "not clear to land!" if not_clear_land
+    raise "not clear to land!" if not_clear_to_land
     plane.land
     @planes << plane
   end
 
   def full?
-    @planes.count == @capacity
+    plane_count == @capacity
   end
 end
