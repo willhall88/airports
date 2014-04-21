@@ -37,6 +37,7 @@ describe Airport do
     end
 
     it "a plane can takeoff" do
+      allow(airport).to receive(:stormy?) {false}
       expect(plane).to receive(:takeoff)
 
       airport.clear_to_takeoff(plane)
@@ -77,7 +78,5 @@ describe Airport do
     end
 
   end
-
-
 
 end

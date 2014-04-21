@@ -15,6 +15,7 @@ class Airport
   end
 
   def clear_to_takeoff(plane)
+    # puts "stormy? : #{stormy?}"
     raise "not clear to takeoff!" if stormy?
     plane.takeoff
     @planes.delete(plane)
@@ -25,6 +26,7 @@ class Airport
   end
 
   def clear_to_land(plane)
+    # puts "stormy? : #{stormy?}"
     raise "not clear to land!" if not_clear_land
     plane.land
     @planes << plane
