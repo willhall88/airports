@@ -1,11 +1,11 @@
 module Weather
 
   def weather
-    
+    @random_number = rand(1..4)
   end
 
   def stormy?
-    false
+    weather == 1
   end
 
 end
