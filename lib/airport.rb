@@ -15,7 +15,7 @@ class Airport
   end
 
   def clear_to_takeoff(plane)
-    # raise "not clear to takeoff!" if stormy?
+    raise "not clear to takeoff!" if stormy?
     plane.takeoff
     @planes.delete(plane)
   end

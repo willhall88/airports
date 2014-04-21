@@ -64,15 +64,15 @@ describe Airport do
 
   end
 
-  # context "weather conditions" do
+  context "weather conditions" do
 
-  #   it"will not allow a plane to take off if stormy" do
-  #     allow(airport).to receive(:weather) {"Stormy"} 
+    it"will not allow a plane to take off if stormy" do
+      allow(airport).to receive(:stormy?) {"true"} 
 
-  #     expect{airport.clear_to_takeoff(plane)}.to raise_error(RuntimeError)
-  #   end
+      expect{airport.clear_to_takeoff(plane)}.to raise_error(RuntimeError)
+    end
 
-  # end
+  end
 
 
 
