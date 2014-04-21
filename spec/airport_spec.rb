@@ -7,24 +7,24 @@ describe Weather do
 
   let(:airport) {Airport.new}
   it "can be sunny" do
-    allow(airport).to receive(:weather) {"Sunny"} 
-    expect(airport.weather).to eq "Sunny"
+    # allow(airport).to receive(:weather) {stormy?} 
+    expect(airport).not_to be_stormy
   
   end
 
-  it "can be stormy" do
+  # it "can be stormy" do
 
-    allow(airport).to receive(:weather) {"Stormy"} 
-    expect(airport.weather).to eq "Stormy"
+  #   allow(airport).to receive(:weather) {"Stormy"} 
+  #   expect(airport.weather).to eq "Stormy"
   
-  end
+  # end
 
 end
 
 describe Airport do
   
   let(:airport) {Airport.new}
-  let(:plane) {double :plane, land: :plane}
+  let(:plane) {double :plane, land: :plane, takeoff: :plane}
 
   context "take off and landing" do
     it "a plane can land" do
@@ -63,5 +63,17 @@ describe Airport do
     end
 
   end
+
+  # context "weather conditions" do
+
+  #   it"will not allow a plane to take off if stormy" do
+  #     allow(airport).to receive(:weather) {"Stormy"} 
+
+  #     expect{airport.clear_to_takeoff(plane)}.to raise_error(RuntimeError)
+  #   end
+
+  # end
+
+
 
 end

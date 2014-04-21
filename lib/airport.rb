@@ -1,5 +1,10 @@
+require "weather"
+
 class Airport
+  include Weather
+
   DEFAULT_CAPACITY = 6
+  
   def initialize(options = {})
     @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
     @planes = []
@@ -10,6 +15,7 @@ class Airport
   end
 
   def clear_to_takeoff(plane)
+    raise "not clear to takeoff!" if stormy?
     plane.takeoff
     @planes.delete(plane)
   end
