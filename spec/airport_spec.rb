@@ -1,4 +1,16 @@
 require "airport"
+require "weather"
+
+class Airport; include Weather; end
+
+describe Weather do
+
+  let(:airport) {Airport.new}
+  it "can be sunny" do
+    # allow(airport).to receive(:weather) { "Sunny" }
+    expect(airport.weather).to eq "Sunny"
+  end
+end
 
 describe Airport do
   

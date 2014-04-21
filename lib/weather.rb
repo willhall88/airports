@@ -1,7 +1,7 @@
 module Weather
 
-  def status
-    return "Sunny"
+  def weather
+    "Sunny"
   end
 
 end
