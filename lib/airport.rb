@@ -5,9 +5,9 @@ class Airport
 
   DEFAULT_CAPACITY = 6
 
-  def initialize(options = {})
-    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
-    @planes = []
+  def initialize(planes = [])
+    @capacity = DEFAULT_CAPACITY
+    @planes = planes
   end
 
   def plane_count
@@ -20,8 +20,12 @@ class Airport
     @planes.delete(plane)
   end
 
+  def not_clear_land
+    full? || stormy?
+  end
+
   def clear_to_land(plane)
-    raise "not clear to land!" if full?
+    raise "not clear to land!" if not_clear_land
     plane.land
     @planes << plane
   end
