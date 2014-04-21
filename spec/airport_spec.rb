@@ -7,9 +7,18 @@ describe Weather do
 
   let(:airport) {Airport.new}
   it "can be sunny" do
-    # allow(airport).to receive(:weather) { "Sunny" }
+    allow(airport).to receive(:weather) {"Sunny"} 
     expect(airport.weather).to eq "Sunny"
+  
   end
+
+  it "can be stormy" do
+
+    allow(airport).to receive(:weather) {"Stormy"} 
+    expect(airport.weather).to eq "Stormy"
+  
+  end
+
 end
 
 describe Airport do
