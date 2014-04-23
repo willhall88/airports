@@ -13,9 +13,10 @@ class Airport
   def plane_count
     @planes.count
   end
-
+  # this sounds like a question, make it a command
   def clear_to_takeoff(plane)
     # puts "stormy? : #{stormy?}"
+    # remove your comments if they are of no value
     raise "not clear to takeoff!" if stormy?
     plane.takeoff
     @planes.delete(plane)
