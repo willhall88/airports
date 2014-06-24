@@ -1,4 +1,4 @@
-module Weather
+class Weather
 
   def weather
     @random_number = rand(1..4)

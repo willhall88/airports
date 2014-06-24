@@ -16,15 +16,15 @@ describe "The grand finale (last spec)" do
 
 #take off 5 planes in good weather
     allow(airport).to receive(:stormy?) {false}
-    airport.clear_to_takeoff(concorde)
-    airport.clear_to_takeoff(jumbo_jet)
-    airport.clear_to_takeoff(spitfire)
-    airport.clear_to_takeoff(lancaster)
-    airport.clear_to_takeoff(the_wright_brothers)
+    airport.takeoff(concorde)
+    airport.takeoff(jumbo_jet)
+    airport.takeoff(spitfire)
+    airport.takeoff(lancaster)
+    airport.takeoff(the_wright_brothers)
 
 #weather become stormy
     allow(airport).to  receive(:stormy?) {true}
-    expect{airport.clear_to_takeoff(mig)}.to raise_error(RuntimeError)
+    expect{airport.takeoff(mig)}.to raise_error(RuntimeError)
     expect(airport.plane_count).to eq 1
     
     expect(concorde).to be_flying
@@ -35,21 +35,21 @@ describe "The grand finale (last spec)" do
     
     expect(mig).not_to be_flying
     
-    expect{airport.clear_to_land(concorde)}.to raise_error(RuntimeError)
+    expect{airport.land(concorde)}.to raise_error(RuntimeError)
 
 #weather is sunny again
     allow(airport).to receive(:stormy?) {false}
-    airport.clear_to_takeoff(mig)
+    airport.takeoff(mig)
     
     expect(mig).to be_flying
     expect(airport.plane_count).to eq 0
    
-    airport.clear_to_land(concorde)
-    airport.clear_to_land(jumbo_jet)
-    airport.clear_to_land(spitfire)
-    airport.clear_to_land(lancaster)
-    airport.clear_to_land(the_wright_brothers)
-    airport.clear_to_land(mig)
+    airport.land(concorde)
+    airport.land(jumbo_jet)
+    airport.land(spitfire)
+    airport.land(lancaster)
+    airport.land(the_wright_brothers)
+    airport.land(mig)
 
     expect(concorde).not_to be_flying
     expect(jumbo_jet).not_to be_flying

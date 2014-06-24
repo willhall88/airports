@@ -1,7 +1,6 @@
 require_relative "weather"
 
 class Airport
-  include Weather
 
   DEFAULT_CAPACITY = 6
 
@@ -13,22 +12,19 @@ class Airport
   def plane_count
     @planes.count
   end
-  # this sounds like a question, make it a command
-  def clear_to_takeoff(plane)
-    # puts "stormy? : #{stormy?}"
-    # remove your comments if they are of no value
+
+  def takeoff(plane)
     raise "not clear to takeoff!" if stormy?
     plane.takeoff
     @planes.delete(plane)
   end
 
-  def not_clear_to_land
+  def not_land
     full? || stormy?
   end
 
-  def clear_to_land(plane)
-    # puts "stormy? : #{stormy?}"
-    raise "not clear to land!" if not_clear_to_land
+  def land(plane)
+    raise "not clear to land!" if not_land
     plane.land
     @planes << plane
   end
